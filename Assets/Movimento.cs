@@ -15,7 +15,9 @@ public class Movimento : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             pular = true;
+            
         }
+        Debug.Log(Input.GetButtonDown("Jump"));
     }
 
     void FixedUpdate()

@@ -6,6 +6,7 @@ public class Movimento : MonoBehaviour
 {
     public CharacterController2D controle;
     public Animator animator;
+    public GameObject ground_check;
 
     public float velocidade = 40f;
 

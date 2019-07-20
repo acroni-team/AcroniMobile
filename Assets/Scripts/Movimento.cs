@@ -23,7 +23,6 @@ public class Movimento : MonoBehaviour
             pular = true;
             animator.SetBool("IsJumping", true);
         }
-        Debug.Log(Input.GetButtonDown("Jump"));
     }
 
     public void OnLanding()

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
+
 
 public class Movimento : MonoBehaviour
 {
@@ -15,11 +17,11 @@ public class Movimento : MonoBehaviour
 
     void Update()
     {
-        movHoriz = Input.GetAxisRaw("Horizontal") * velocidade;
+        movHoriz = CrossPlatformInputManager.GetAxis("Horizontal") * velocidade;
 
         animator.SetFloat("Speed", Mathf.Abs(movHoriz));
 
-        if (Input.GetButtonDown("Jump"))
+        if (CrossPlatformInputManager.GetButtonDown("Jump"))
         {
             pular = true;
             animator.SetBool("IsJumping", true);

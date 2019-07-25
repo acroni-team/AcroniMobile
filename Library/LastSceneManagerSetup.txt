@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/cena_aereo.unity
+- path: Assets/Scenes/nova_aerea.unity
   isLoaded: 1
   isActive: 1

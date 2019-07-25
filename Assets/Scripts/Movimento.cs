@@ -36,6 +36,7 @@ public class Movimento : MonoBehaviour
     void FixedUpdate()
     {   
         controle.Move(movHoriz * Time.fixedDeltaTime, false, pular);
+        Debug.Log(pular);
         pular = false;
     }
 

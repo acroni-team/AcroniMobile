@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Parallax.cs" />
     <Compile Include="Assets\Scripts\Trigger.cs" />
     <Compile Include="Assets\Scripts\TriggerGround.cs" />
+    <Compile Include="Assets\WalkingCloud.cs" />
     <None Include="Assets\Imports\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <Reference Include="Cinemachine">
       <HintPath>C:/Users/gui_m/Documents/GitHub/Commit/AcroniMobile/Library/ScriptAssemblies/Cinemachine.dll</HintPath>

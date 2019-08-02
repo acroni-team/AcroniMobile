@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Trigger.cs" />
     <Compile Include="Assets\Scripts\TriggerGround.cs" />
     <Compile Include="Assets\Scripts\WalkingCloud.cs" />
+    <Compile Include="Assets\SetSpawn.cs" />
     <None Include="Assets\Imports\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <Reference Include="Cinemachine">
       <HintPath>C:/Users/gui_m/Documents/GitHub/AcroniMobile/Library/ScriptAssemblies/Cinemachine.dll</HintPath>

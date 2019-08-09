@@ -36,7 +36,7 @@ public class SwitchFollow : MonoBehaviour
         }        
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (start && !movement_done)
             player.transform.position = new Vector3(player.transform.position.x + velocity, player.transform.position.y, player.transform.position.z);

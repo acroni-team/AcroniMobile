@@ -40,7 +40,7 @@ public class PuzzleTilemap : MonoBehaviour
     public bool startShow = false;
     int tile = 0;
     float anim = 1;
-    private void Update()
+    private void FixedUpdate()
     {
         if (isColliding)
         {
@@ -108,7 +108,6 @@ public class PuzzleTilemap : MonoBehaviour
     //    }
     //}
 
-    //Para fazer sumir as tiles
     public void Clear()
     {
         foreach (Vector3Int local in locals)
@@ -124,10 +123,4 @@ public class PuzzleTilemap : MonoBehaviour
             }
         }
     }
-
-    public void ShowPath(float fadeIn)
-    {
-
-    }
-
 }

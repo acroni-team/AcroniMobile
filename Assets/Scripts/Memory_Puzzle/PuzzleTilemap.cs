@@ -49,12 +49,13 @@ public class PuzzleTilemap : MonoBehaviour
         }
         if (startShow)
         {
+            Vector3Int position = new Vector3Int();
             if (tile == locals.Length)
             {
                 Clear();
                 startShow = false;
-            }
-            Vector3Int position = locals[tile];
+            }else 
+                position = locals[tile];
             
             if (!(tilemap.GetColor(new Vector3Int(position.x, position.y, position.z)).Equals(new Color(1, 1, 0))))
             {

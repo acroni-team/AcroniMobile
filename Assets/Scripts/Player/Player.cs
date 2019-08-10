@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
 
     public void NextSpawn()
     {
-        Debug.Log(index_spawn);
         if (index_spawn < spawns.Length)
             index_spawn++;
         else

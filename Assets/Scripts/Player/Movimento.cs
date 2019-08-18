@@ -52,7 +52,7 @@ public class Movimento : MonoBehaviour
             controle.Move(movHoriz * Time.fixedDeltaTime, false, pular);
         else
         {
-            rdb.velocity = Vector3.zero;
+            rdb.velocity = new Vector3(0, rdb.velocity.y, 0);
             rdb.angularVelocity = 0;
         }
             

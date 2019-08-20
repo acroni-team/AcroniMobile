@@ -23,7 +23,6 @@ public class SwitchFollow : MonoBehaviour
             player_mvt.canMove = false;
             cam.Follow = player.transform;
             start = true;
-            Player.getInstance().NextSpawn();
             FindObjectOfType<PuzzleTilemap>().startShow = true;
         }
         else if (collision.gameObject.CompareTag("showLevel") && type.Equals(ShowType.End) && !movement_done)

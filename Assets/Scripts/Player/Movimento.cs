@@ -46,13 +46,16 @@ public class Movimento : MonoBehaviour
         animator.SetBool("IsJumping", false);
     }
 
+    float enter = 1;
     void FixedUpdate()
     {
+        enter = enter > 0.001? rdb.velocity.x : 0;
         if (canMove)
             controle.Move(movHoriz * Time.fixedDeltaTime, false, pular);
         else
         {
-            rdb.velocity = new Vector3(0, rdb.velocity.y, 0);
+            enter = enter - 0.025f;
+            rdb.velocity = new Vector3(enter, rdb.velocity.y, 0);
             rdb.angularVelocity = 0;
         }
             

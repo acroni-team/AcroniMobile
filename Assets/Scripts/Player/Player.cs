@@ -2,16 +2,23 @@
 
 public class Player : MonoBehaviour
 {
-    private static Player instance;
+    static Player instance;
+    static Movimento player_movement;
 
     private void Awake()
     {
         instance = this;
+        player_movement = GetComponent<Movimento>();
     }
 
     public static Player getInstance()
     {
         return instance;
+    }
+
+    public Movimento GetPlayerMovement()
+    {
+        return player_movement;
     }
 
     public Vector3[] spawns;

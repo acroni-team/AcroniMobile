@@ -9,8 +9,6 @@ public class Movimento : MonoBehaviour
     public CharacterController2D controle;
     public Animator animator;
     public GameObject ground_check;
-    [HideInInspector]
-    public bool canMove = true;
     public float velocidade = 40f;
 
     float movHoriz = 0f;
@@ -33,6 +31,7 @@ public class Movimento : MonoBehaviour
             if (CrossPlatformInputManager.GetButtonDown("Jump"))
             {
                 pular = true;
+                isJumping = true;
                 animator.SetBool("IsJumping", true);
             }
         }else {
@@ -41,9 +40,21 @@ public class Movimento : MonoBehaviour
         }
     }
 
+    bool canMove = true;
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+    public void DisableMovement()
+    {
+        canMove = false;
+    }
+
+    bool isJumping = false;
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
+        isJumping = false;
     }
 
     float enter = 1;
@@ -54,9 +65,8 @@ public class Movimento : MonoBehaviour
             controle.Move(movHoriz * Time.fixedDeltaTime, false, pular);
         else
         {
-            enter = enter - 0.025f;
-            rdb.velocity = new Vector3(enter, rdb.velocity.y, 0);
-            rdb.angularVelocity = 0;
+            if (!isJumping)
+                rdb.velocity = Vector3.zero;
         }
             
         pular = false;

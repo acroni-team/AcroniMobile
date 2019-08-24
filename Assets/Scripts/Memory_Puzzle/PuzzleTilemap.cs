@@ -11,6 +11,7 @@ public class PuzzleTilemap : MonoBehaviour
     Tilemap tilemap;
     bool isColliding = false;
     Vector3Int placeAda;
+    bool startShow = false;
 
     private void Awake()
     {
@@ -36,8 +37,6 @@ public class PuzzleTilemap : MonoBehaviour
         SetColorArround(placeAda, 0);
     }
 
-    [HideInInspector]
-    public bool startShow = false;
     int tile = 0;
     float anim = 1;
     private void FixedUpdate()
@@ -70,6 +69,8 @@ public class PuzzleTilemap : MonoBehaviour
             }
         }
     }
+
+    public void StartShow() => startShow = true;
 
     public void SetColorArround(Vector3Int place, float anime)
     {

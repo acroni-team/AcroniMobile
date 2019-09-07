@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     {
         instance = this;
         player_movement = GetComponent<Movimento>();
+        //GetComponent<Rigidbody2D>().velocity = GameManager.GetInstance().GetPostVelocity();
+        //GetComponent<Rigidbody2D>().angularVelocity = GameManager.GetInstance().GetPostAngularVelocity();
     }
 
     public static Player getInstance()
@@ -26,14 +28,23 @@ public class Player : MonoBehaviour
 
     public void TeleportToSpawn()
     {
-            transform.position = spawns[index_spawn];
+        transform.position = spawns[index_spawn];
+    }
+
+    public void ResetSpawn()
+    {
+        index_spawn = 0;
+        TeleportToSpawn();
     }
 
     public void NextSpawn()
     {
-        Debug.Log(index_spawn);
         if (index_spawn < spawns.Length)
+        {
             index_spawn++;
+            if (index_spawn == spawns.Length - 1)
+                CountdownTimer.getInstance().StopTimer();
+        }
         else
             Debug.LogError("Tá faltando spawns na lista do player!");
     }

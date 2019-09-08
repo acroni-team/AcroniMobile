@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/cena_aereo.unity
     guid: 11e7563bfa991b545bc2cecd28050485
+  - enabled: 1
+    path: Assets/Scenes/nova_aerea.unity
+    guid: d0ec6e91e8145ef4bbf46a7f42338b72
   m_configObjects: {}

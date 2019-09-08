@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour
         return gameManager;
     }
 
-    public void LoadScene(int index)
+    public void LoadScene(string name)
     {
-        SceneManager.LoadScene(index);
+        SceneManager.LoadScene(name);
     }
 
     //static Vector3 postVelocity = Vector3.zero;

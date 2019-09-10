@@ -46,7 +46,6 @@ public class CountdownTimer : MonoBehaviour
 
         if (isCompleted)
         {
-            //GameManager.GetInstance().SetPostVelocity(Player.getInstance().GetComponent<Rigidbody2D>().velocity,Player.getInstance().GetComponent<Rigidbody2D>().angularVelocity);
             GameManager.GetInstance().LoadScene("nova_aerea");
             return;
         }

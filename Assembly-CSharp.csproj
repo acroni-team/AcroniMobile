@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Background\Parallax.cs" />
     <Compile Include="Assets\Scripts\Background\WalkingCloud.cs" />
     <Compile Include="Assets\Scripts\CountdownTimer.cs" />
+    <Compile Include="Assets\Scripts\Market\Store.cs" />
     <Compile Include="Assets\Scripts\Memory_Puzzle\EnterFollow.cs" />
     <Compile Include="Assets\Scripts\Memory_Puzzle\ExitFollow.cs" />
     <Compile Include="Assets\Scripts\Memory_Puzzle\MovingObject.cs" />

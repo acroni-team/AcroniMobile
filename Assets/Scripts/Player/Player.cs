@@ -4,13 +4,14 @@ public class Player : MonoBehaviour
 {
     static Player instance;
     static Movimento player_movement;
+    static Inventory player_inventory;
+    static int player_currency = 500;
 
     private void Awake()
     {
         instance = this;
         player_movement = GetComponent<Movimento>();
-        //GetComponent<Rigidbody2D>().velocity = GameManager.GetInstance().GetPostVelocity();
-        //GetComponent<Rigidbody2D>().angularVelocity = GameManager.GetInstance().GetPostAngularVelocity();
+        player_inventory = new Inventory();
     }
 
     public static Player getInstance()
@@ -21,6 +22,11 @@ public class Player : MonoBehaviour
     public Movimento GetPlayerMovement()
     {
         return player_movement;
+    }
+
+    public Inventory GetPlayerInventory()
+    {
+        return player_inventory;
     }
 
     public Vector3[] spawns;
@@ -39,6 +45,7 @@ public class Player : MonoBehaviour
 
     public void NextSpawn()
     {
+
         if (index_spawn < spawns.Length)
         {
             index_spawn++;
@@ -47,5 +54,18 @@ public class Player : MonoBehaviour
         }
         else
             Debug.LogError("Tá faltando spawns na lista do player!");
+    }
+
+    public int GetPlayerCurrency()
+    {
+        return player_currency;
+    }
+
+    public int RemoveFromPlayerCurrency(int amount)
+    {
+        if (player_currency >= amount)
+            player_currency -= amount;
+
+        return player_currency;
     }
 }

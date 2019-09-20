@@ -22,20 +22,4 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
-
-    //static Vector3 postVelocity = Vector3.zero;
-    //static float postAngularVelocity = 0f;
-    //public Vector3 GetPostVelocity()
-    //{
-    //    return postVelocity;
-    //}
-    //public float GetPostAngularVelocity()
-    //{
-    //    return postAngularVelocity;
-    //}
-    //public void SetPostVelocity(Vector3 velocity, float angularVelocity)
-    //{
-    //    postVelocity = velocity;
-    //    postAngularVelocity = angularVelocity;
-    //}
 }

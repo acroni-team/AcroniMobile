@@ -1,20 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 
 public class Store : MonoBehaviour
 {
     public Animator animator;
 
+    public TextMeshProUGUI moneyController;
     static Store store;
+
+    void Start()
+    {
+        moneyController.text = Player.getInstance().GetPlayerCurrency().ToString() + " A";
+    }
 
     void Awake()
     {
         store = this;
     }
 
-    public Store GetInstance()
+    public static Store GetInstance()
     {
         return store;
     }
@@ -22,7 +28,7 @@ public class Store : MonoBehaviour
     bool canAnimate = true;
     public void UI_Click()
     {
-            animator.SetTrigger("CanAnimate");
+        animator.SetTrigger("CanAnimate");
         if (!isOpen)
             Open();
         else
@@ -32,12 +38,16 @@ public class Store : MonoBehaviour
     public void Open()
     {
         isOpen = true;
+        CountdownTimer.getInstance().StopTimer();
+        Player.getInstance().GetPlayerMovement().DisableMovement();
         animator.SetBool("isOpen", true);
     }
 
     public void Close()
     {
         isOpen = false;
+        CountdownTimer.getInstance().StartTimer();
+        Player.getInstance().GetPlayerMovement().EnableMovement();
         animator.SetBool("isOpen", false);
     }
 
@@ -45,5 +55,10 @@ public class Store : MonoBehaviour
     public bool IsOpen()
     {
         return isOpen;
+    }
+
+    public void SetCurrencyDisplay(int money)
+    {
+        moneyController.text = money.ToString() + " A";
     }
 }

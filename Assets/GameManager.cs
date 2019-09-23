@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     static GameManager gameManager;
 
+    bool isLevelOver = false;
+
     void Start()
     {
         gameManager = this;
@@ -21,5 +23,20 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string name)
     {
         SceneManager.LoadScene(name);
+    }
+
+    public void GameOver(string scene_name)
+    {
+        LoadScene(scene_name);
+    }
+
+    public bool IsLevelOver()
+    {
+        return isLevelOver;
+    }
+
+    public void EndLevel()
+    {
+        isLevelOver = true;
     }
 }

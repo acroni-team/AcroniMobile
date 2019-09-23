@@ -46,7 +46,8 @@ public class Store : MonoBehaviour
     public void Close()
     {
         isOpen = false;
-        CountdownTimer.getInstance().StartTimer();
+        if (!GameManager.GetInstance().IsLevelOver())
+            CountdownTimer.getInstance().StartTimer();
         Player.getInstance().GetPlayerMovement().EnableMovement();
         animator.SetBool("isOpen", false);
     }

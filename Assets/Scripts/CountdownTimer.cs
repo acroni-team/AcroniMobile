@@ -46,7 +46,7 @@ public class CountdownTimer : MonoBehaviour
 
         if (isCompleted)
         {
-            GameManager.GetInstance().LoadScene("nova_aerea");
+            GameManager.GetInstance().GameOver("nova_aerea");
             return;
         }
 

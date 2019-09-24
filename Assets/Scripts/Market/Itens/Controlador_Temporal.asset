@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82cc32208a3ccf4a9102f12b49a671b, type: 3}
   m_Name: Controlador_Temporal
   m_EditorClassIdentifier: 
-  index: 1
   cost: 150
   name: Controlador Temporal
-  image: {fileID: 21300000, guid: 9d7c6e4896067aa4fa512a00f692ac1c, type: 3}
+  image: {fileID: 21300000, guid: 7147015833cf2084cb9a0c512df093f4, type: 3}

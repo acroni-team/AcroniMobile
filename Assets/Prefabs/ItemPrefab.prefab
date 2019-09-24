@@ -344,6 +344,7 @@ MonoBehaviour:
   item: {fileID: 0}
   costText: {fileID: 1981869671876705522}
   imageItem: {fileID: 3650064236388945393}
+  imageAnimator: {fileID: 1817296806431239969}
 --- !u!222 &8006348549171636926
 CanvasRenderer:
   m_ObjectHideFlags: 0

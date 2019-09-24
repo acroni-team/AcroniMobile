@@ -9,10 +9,12 @@ public class InventoryController : MonoBehaviour
     static InventoryController inventoryController;
 
     public Image firstSlot;
+    public Animator f_Animator;
     [HideInInspector]
     public StoreItem storeItem1;
 
     public Image secondSlot;
+    public Animator s_Animator;
     [HideInInspector]
     public StoreItem storeItem2;
 
@@ -24,12 +26,14 @@ public class InventoryController : MonoBehaviour
         if (firstTime || storeItem1.name.Equals(reference.name))
         {
             firstSlot.sprite = reference.image;
+            f_Animator.SetTrigger(reference.name);
             firstSlot.GetComponentInChildren<TextMeshProUGUI>().text = quantity.ToString();
             firstTime = false;
             storeItem1 = reference;
         }else
         {
             secondSlot.sprite = reference.image;
+            s_Animator.SetTrigger(reference.name);
             secondSlot.GetComponentInChildren<TextMeshProUGUI>().text = quantity.ToString();
             storeItem2 = reference;
             canCheck = true;

@@ -10,11 +10,13 @@ public class ItemManager : MonoBehaviour
 
     public TextMeshProUGUI costText;
     public Image imageItem;
+    public Animator imageAnimator;
 
     void Start()
     {
         costText.text = item.cost.ToString();
         imageItem.sprite = item.image;
+        imageAnimator.SetTrigger(item.name);
     }
 
     public void OnClick()

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82cc32208a3ccf4a9102f12b49a671b, type: 3}
   m_Name: Trampolim
   m_EditorClassIdentifier: 
-  index: 0
   cost: 50
   name: Trampolim
-  image: {fileID: 21300000, guid: eb5f6e2757c821940b69cf1456f7865a, type: 3}
+  image: {fileID: 21300000, guid: 0421f5af9c965c241a9b3fbe1de6fadc, type: 3}

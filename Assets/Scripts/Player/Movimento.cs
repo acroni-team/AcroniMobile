@@ -55,7 +55,7 @@ public class Movimento : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("trampoline"))
             animator.SetBool("IsJumping", true);
-        }
+    }
     public void OnCollisionEnter2D(Collision2D collider2d)
     {
         if (collider2d.gameObject.tag.Equals("trampoline"))
@@ -75,11 +75,8 @@ public class Movimento : MonoBehaviour
         }
     }
 
-
-    float enter = 1;
     void FixedUpdate()
     {
-        enter = enter > 0.001? rdb.velocity.x : 0;
         if (canMove)
             controle.Move(movHoriz * Time.fixedDeltaTime, false, pular);
         else

@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
     static Player instance;
     static Movimento player_movement;
     static Inventory player_inventory;
-    static int player_currency = 500;
+    int player_currency = 500;
 
     private void Awake()
     {
@@ -27,6 +27,11 @@ public class Player : MonoBehaviour
     public Inventory GetPlayerInventory()
     {
         return player_inventory;
+    }
+
+    public int GetPlayerCurrency()
+    {
+        return player_currency;
     }
 
     public Vector3[] spawns;
@@ -54,11 +59,6 @@ public class Player : MonoBehaviour
         }
         else
             Debug.LogError("Tá faltando spawns na lista do player!");
-    }
-
-    public int GetPlayerCurrency()
-    {
-        return player_currency;
     }
 
     public int RemoveFromPlayerCurrency(int amount)

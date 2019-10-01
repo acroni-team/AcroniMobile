@@ -15,20 +15,17 @@ public class ItemManager : MonoBehaviour
     void Start()
     {
         costText.text = item.cost.ToString();
-        imageItem.sprite = item.image;
         imageAnimator.SetTrigger(item.name);
     }
 
     public void OnClick()
     {
-        if (InventoryController.GetInventoryController().canCheck)
-            if (!InventoryController.GetInventoryController().storeItem1.name.Equals(item.name) && !InventoryController.GetInventoryController().storeItem2.name.Equals(item.name))
-                return;
+        if (Player.getInstance().GetPlayerCurrency() >= item.cost)
+        {
+            int current = Player.getInstance().RemoveFromPlayerCurrency(item.cost);
+            Store.GetInstance().SetCurrencyDisplay(current);
 
-        int current = Player.getInstance().RemoveFromPlayerCurrency(item.cost);
-        Store.GetInstance().SetCurrencyDisplay(current);
-
-        if (current >= 0)
             Player.getInstance().GetPlayerInventory().InsertItem(item);
+        }
     }
 }

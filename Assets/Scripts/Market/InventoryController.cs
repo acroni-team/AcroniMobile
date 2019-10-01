@@ -7,36 +7,27 @@ using TMPro;
 public class InventoryController : MonoBehaviour
 {
     static InventoryController inventoryController;
+    public Animator imageAnimator;
+    public TextMeshProUGUI text;
 
-    public Image firstSlot;
-    public Animator f_Animator;
-    [HideInInspector]
-    public StoreItem storeItem1;
+    public SlotController previous_slot;
+    public SlotController current_slot;
+    public SlotController next_slot;
 
-    public Image secondSlot;
-    public Animator s_Animator;
-    [HideInInspector]
-    public StoreItem storeItem2;
-
-    bool firstTime = true;
-    [HideInInspector]
-    public bool canCheck = false;
-    public void AddItem(StoreItem reference, int quantity)
+    public void AddItem(InventoryItem item)
     {
-        if (firstTime || storeItem1.name.Equals(reference.name))
+        if (current_slot.IsEmpty() || current_slot.Equals(item))
         {
-            firstSlot.sprite = reference.image;
-            f_Animator.SetTrigger(reference.name);
-            firstSlot.GetComponentInChildren<TextMeshProUGUI>().text = quantity.ToString();
-            firstTime = false;
-            storeItem1 = reference;
-        }else
+            current_slot.Fill(item.GetName(), item.GetQuantity());
+            return;
+        }else if (next_slot.IsEmpty() || next_slot.Equals(item))
         {
-            secondSlot.sprite = reference.image;
-            s_Animator.SetTrigger(reference.name);
-            secondSlot.GetComponentInChildren<TextMeshProUGUI>().text = quantity.ToString();
-            storeItem2 = reference;
-            canCheck = true;
+            next_slot.Fill(item.GetName(), item.GetQuantity());
+            return;
+        }else if (previous_slot.IsEmpty() || previous_slot.Equals(item))
+        {
+            previous_slot.Fill(item.GetName(), item.GetQuantity());
+            return;
         }
     }
 

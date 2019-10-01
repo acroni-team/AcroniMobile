@@ -8,7 +8,7 @@ public class Inventory
 
     public Inventory()
     {
-        inventoryItems = new InventoryItem[2];
+        inventoryItems = new InventoryItem[4];
     }
 
     public int prov = 0;
@@ -23,14 +23,14 @@ public class Inventory
             if (inventoryItems[i] == null)
             {
                 inventoryItems[i] = new InventoryItem(item, 1);
-                InventoryController.GetInventoryController().AddItem(item, inventoryItems[i].GetQuantity());
+                InventoryController.GetInventoryController().AddItem(inventoryItems[i]);
                 prov++;
                 break;
             }
             else if (inventoryItems[i].GetName().Equals(item.name))
             {
                 inventoryItems[i].IncrementQuantity();
-                InventoryController.GetInventoryController().AddItem(item, inventoryItems[i].GetQuantity());
+                InventoryController.GetInventoryController().AddItem(inventoryItems[i]);
                 break;
             }
         }

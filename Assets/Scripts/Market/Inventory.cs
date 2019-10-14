@@ -45,4 +45,19 @@ public class Inventory
         //}
         //Debug.Log(retur);
     }
+
+    public int DecreseQuantityFromItem(string name)
+    {
+        int ret = 0;
+        foreach(InventoryItem item in inventoryItems)
+        {
+            Debug.Log(item.GetName() + " " + name);
+            if (item.GetName().Equals(name))
+            {
+                ret = item.DecreaseQuantity();
+                break;
+            }
+        }
+        return ret;
+    } 
 }

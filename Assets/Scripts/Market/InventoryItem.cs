@@ -23,6 +23,11 @@ public class InventoryItem
         item_quantity++;
     }
 
+    public int DecreaseQuantity()
+    {
+        return --item_quantity;
+    }
+
     public string GetName()
     {
         return reference.name;

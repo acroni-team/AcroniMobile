@@ -56,27 +56,37 @@ public class Movimento : MonoBehaviour
         if (collision.gameObject.tag.Equals("trampoline"))
             animator.SetBool("IsJumping", true);
     }
+
+    bool useFixUpdate = true;
     public void OnCollisionEnter2D(Collision2D collider2d)
     {
         if (collider2d.gameObject.tag.Equals("trampoline"))
         {
             if (isJumping)
+            {
+                useFixUpdate = false;
                 animator.SetBool("IsJumping", false);
+            }
             else
             {
                 animator.SetBool("IsJumping", true);
-                isJumping = true;
+                useFixUpdate = false;
+                //Jumping = true;
             }
         }
         else
         {
             animator.SetBool("IsJumping", false);
-            isJumping = false;
+            useFixUpdate = true;
+            //isJumping = false;
         }
     }
 
     void FixedUpdate()
     {
+        if (!useFixUpdate)
+            return;
+
         if (canMove)
             controle.Move(movHoriz * Time.fixedDeltaTime, false, pular);
         else

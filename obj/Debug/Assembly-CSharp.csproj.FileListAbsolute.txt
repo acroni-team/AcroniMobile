@@ -574,3 +574,6 @@ C:\Users\gui_m\Documents\GitHub\AcroniMobile\obj\Debug\Assembly-CSharp.csproj.Co
 C:\Users\gui_m\Documents\GitHub\AcroniMobile\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\gui_m\Documents\GitHub\AcroniMobile\obj\Debug\Assembly-CSharp.dll
 C:\Users\gui_m\Documents\GitHub\AcroniMobile\obj\Debug\Assembly-CSharp.pdb
+D:\ATUALIZADO 2019 MOBILE\AcroniMobile-master\AcroniMobile-master\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\ATUALIZADO 2019 MOBILE\AcroniMobile-master\AcroniMobile-master\obj\Debug\Assembly-CSharp.dll
+D:\ATUALIZADO 2019 MOBILE\AcroniMobile-master\AcroniMobile-master\obj\Debug\Assembly-CSharp.pdb

@@ -12,6 +12,7 @@ public class SlotController : MonoBehaviour
 
     //PRIVATE VARIABLES
     BoxCollider2D box;
+    public RectTransform rect;
     string slot_item;
     bool isEmpty = true;
     Vector3 startPoint;
@@ -49,6 +50,7 @@ public class SlotController : MonoBehaviour
 
     void SummonItem(string itemName)
     {
+        
         switch(itemName)
         {
             case "Pinha": Instantiate(pineCone, transform.position + offset, Quaternion.identity);
@@ -70,7 +72,7 @@ public class SlotController : MonoBehaviour
     private void Start()
     {
         box = GetComponent<BoxCollider2D>();
-        startPoint = transform.position;
+        startPoint = rect.position;
     }
 
     bool isMoving;
@@ -79,15 +81,20 @@ public class SlotController : MonoBehaviour
         if (!slotType.Equals(SlotType.CURRENT))
             return;
 
+        if (item_quantity.text.Equals("0"))
+        {
+            ChangeSlotImage();
+            isEmpty = true;
+            return;
+        }
+
         if (Input.touchCount == 0)
         {
             if (isMoving)
             {
                 SummonItem(slot_item);
 
-                if (item_quantity.text.Equals("0")) /*then*/ ChangeSlotImage();
-
-                transform.position = startPoint;
+                rect.anchoredPosition = startPoint;
             }
 
             isMoving = false;
@@ -101,7 +108,7 @@ public class SlotController : MonoBehaviour
         {
             isMoving = true;
             Vector3Int intPosition = new Vector3Int(Mathf.FloorToInt(position.x), Mathf.FloorToInt(position.y), 0);
-            transform.position = intPosition;
+                rect.position = intPosition;
         }
     }
     #endregion

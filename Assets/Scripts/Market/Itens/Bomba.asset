@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a82cc32208a3ccf4a9102f12b49a671b, type: 3}
-  m_Name: Pinha
+  m_Name: Bomba
   m_EditorClassIdentifier: 
   cost: 50
   name: Pinha

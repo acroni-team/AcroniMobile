@@ -6,6 +6,9 @@ public class Trigger : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.tag.Equals("Player"))
+            return;
+
         Player.getInstance().TeleportToSpawn();
         FindObjectOfType<PuzzleTilemap>().Clear();
     }

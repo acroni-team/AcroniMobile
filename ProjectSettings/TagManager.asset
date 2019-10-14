@@ -6,6 +6,7 @@ TagManager:
   tags:
   - showLevel
   - trampoline
+  - SpecialBlocks
   layers:
   - Default
   - TransparentFX

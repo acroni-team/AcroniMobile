@@ -49,12 +49,32 @@ public class Movimento : MonoBehaviour
     {
         canMove = false;
     }
-
+    public void EnableAddForce()
+    {
+        isAddingForce = true;
+    }
+    public void DisableAddForce()
+    {
+        isAddingForce = false;
+    }
+    public void StartJumpAnimation()
+    {
+        animator.SetBool("IsJumping", true);
+    }
+    public bool getIsAddingForce()
+    {
+        return isAddingForce;
+    }
     bool isJumping = false;
+    bool isAddingForce = false;
     public void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("trampoline"))
+        {
             animator.SetBool("IsJumping", true);
+            Player.getInstance().GetPlayerMovement().EnableMovement();
+
+        }
     }
     public void OnCollisionEnter2D(Collision2D collider2d)
     {
@@ -67,22 +87,25 @@ public class Movimento : MonoBehaviour
                 animator.SetBool("IsJumping", true);
                 isJumping = true;
             }
+            Player.getInstance().GetPlayerMovement().DisableMovement();
+            Player.getInstance().GetPlayerMovement().EnableAddForce();
         }
         else
         {
             animator.SetBool("IsJumping", false);
             isJumping = false;
+            DisableAddForce();
         }
     }
-
     void FixedUpdate()
     {
         if (canMove)
             controle.Move(movHoriz * Time.fixedDeltaTime, false, pular);
         else
         {
-            if (!isJumping)
-                rdb.velocity = Vector3.zero;
+            if (!isAddingForce)
+                if (!isJumping)
+                    rdb.velocity = Vector3.zero;
         }
             
         pular = false;

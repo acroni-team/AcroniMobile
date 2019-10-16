@@ -27,7 +27,7 @@ public class ChangeAngle : MonoBehaviour
             GetComponent<AreaEffector2D>().forceAngle = 120;
         else
             GetComponent<AreaEffector2D>().forceAngle = 90;
-        Debug.Log(collision.otherCollider.GetType());
+        //Debug.Log(collision.otherCollider.GetType());
     }
 
 }

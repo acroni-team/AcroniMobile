@@ -30,14 +30,31 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         if(current_slot.GetQuantity() == 0)
         {
-            if (next_slot.IsEmpty())
+            if (!next_slot.IsEmpty())
             {
-                //current_slot.Fill(next_slot);
+                current_slot.Fill(next_slot.item_reference);
+
+                if(!previous_slot.IsEmpty())
+                {
+                    next_slot.Fill(previous_slot.item_reference);
+                    
+                    if (Player.getInstance().GetPlayerInventory().HasItemAt(3))
+                    {
+                        previous_slot.Fill(Player.getInstance().GetPlayerInventory().GetItemAt(3));
+                        Player.getInstance().GetPlayerInventory().RemodelList();
+                    }
+                    else
+                        previous_slot.Clear();
+                }
+                else
+                    next_slot.Clear();
             }
+            else
+                current_slot.Clear();
         }
     }
 

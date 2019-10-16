@@ -17,6 +17,8 @@ public class SlotController : MonoBehaviour
     bool isEmpty = true;
     Vector3 startPoint;
     Vector3 offset = new Vector3(0.43f,0.43f);
+    [HideInInspector]
+    public InventoryItem item_reference;
 
     //ITEMS
     public GameObject pineCone;
@@ -29,6 +31,7 @@ public class SlotController : MonoBehaviour
         slot_item = slot.GetName();
         imageAnimator.SetTrigger(slot_item);
         item_quantity.text = slot.GetQuantity().ToString();
+        item_reference = slot;
 
         isEmpty = false;
     }
@@ -48,9 +51,15 @@ public class SlotController : MonoBehaviour
         return Int16.Parse(item_quantity.text);
     }
 
+    public void Clear()
+    {
+        imageAnimator.SetTrigger("default");
+        item_quantity.text = "0";
+        isEmpty = true;
+    }
+
     void SummonItem(string itemName)
     {
-        
         switch(itemName)
         {
             case "Pinha": Instantiate(pineCone, transform.position + offset, Quaternion.identity);
@@ -60,11 +69,6 @@ public class SlotController : MonoBehaviour
         }
         item_quantity.text = Player.getInstance().GetPlayerInventory().DecreseQuantityFromItem(itemName).ToString();
     }
-
-    void ChangeSlotImage()
-    {
-        imageAnimator.SetTrigger("default");
-    }
     #endregion
 
     #region MonoBehaviour Methods
@@ -72,7 +76,8 @@ public class SlotController : MonoBehaviour
     private void Start()
     {
         box = GetComponent<BoxCollider2D>();
-        startPoint = rect.position;
+        if (slotType.Equals(SlotType.CURRENT))
+            startPoint = rect.position;
     }
 
     bool isMoving;
@@ -83,8 +88,7 @@ public class SlotController : MonoBehaviour
 
         if (item_quantity.text.Equals("0"))
         {
-            ChangeSlotImage();
-            isEmpty = true;
+            InventoryController.GetInventoryController().UpdateUI();
             return;
         }
 
@@ -92,8 +96,8 @@ public class SlotController : MonoBehaviour
         {
             if (isMoving)
             {
+                isMoving = false;
                 SummonItem(slot_item);
-
                 rect.anchoredPosition = startPoint;
             }
 
@@ -107,8 +111,9 @@ public class SlotController : MonoBehaviour
         if (box.OverlapPoint(position) || isMoving)
         {
             isMoving = true;
-            Vector3Int intPosition = new Vector3Int(Mathf.FloorToInt(position.x), Mathf.FloorToInt(position.y), 0);
-                rect.position = intPosition;
+            Vector3 Position = new Vector3(position.x, position.y, 0);
+            //Vector3Int intPosition = new Vector3Int(Mathf.FloorToInt(position.x), Mathf.FloorToInt(position.y), 0);
+                rect.position = Position;
         }
     }
     #endregion

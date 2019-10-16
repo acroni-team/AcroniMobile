@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,13 +52,51 @@ public class Inventory
         int ret = 0;
         foreach(InventoryItem item in inventoryItems)
         {
-            Debug.Log(item.GetName() + " " + name);
             if (item.GetName().Equals(name))
             {
                 ret = item.DecreaseQuantity();
+                
                 break;
             }
         }
         return ret;
-    } 
+    }
+
+     public void RemodelList()
+     {
+        int remodel_index = 0;
+        InventoryItem[] model = (InventoryItem[])inventoryItems.Clone();
+        inventoryItems = new InventoryItem[4];
+        for (int i = 0; i < 4; i++)
+        {
+            try
+            {
+                if (model[i].GetQuantity() != 0)
+                {
+                    //Debug.Log(model[i].GetName() + "; " + model[i].GetQuantity());
+                    inventoryItems[remodel_index] = model[i];
+                    remodel_index++;
+                }
+            }catch (Exception)
+            {
+            }
+        }
+     }
+
+    public InventoryItem GetItemAt(int index)
+    {
+        return inventoryItems[index];
+    }
+
+    public bool HasItemAt(int index)
+    {
+        bool r_bool = false;
+        try
+        {
+            inventoryItems[index].GetName();
+            r_bool = true;
+        } catch (Exception) { }
+
+        return r_bool;
+    }
 }

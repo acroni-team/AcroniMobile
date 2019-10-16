@@ -45,7 +45,7 @@ public class Explosion : MonoBehaviour
                 }
             }
         }
-        catch (System.Exception e) { Debug.Log(e.Message); }
+        catch (System.Exception e) { /*Debug.Log(e.Message);*/ }
     }
 
     public void OnExplosionFinished()

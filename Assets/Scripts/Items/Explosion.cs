@@ -56,5 +56,10 @@ public class Explosion : MonoBehaviour
     {
         Player.getInstance().GetPlayerMovement().EnableMovement();
     }
+
+    public void PlaySound()
+    {
+        AudioManager.GetInstance().Play("sfx-explosion");
+    }
 }
 

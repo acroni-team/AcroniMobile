@@ -22,7 +22,9 @@ public class SlotController : MonoBehaviour
 
     //ITEMS
     public GameObject pineCone;
+    public GameObject bomba;
     public GameObject trampoline;
+    public GameObject timeDecelerator;
 
     #region SlotController Methods
 
@@ -62,9 +64,13 @@ public class SlotController : MonoBehaviour
     {
         switch(itemName)
         {
-            case "Pinha": Instantiate(pineCone, transform.position + offset, Quaternion.identity);
+            case "Bomba": Instantiate(bomba, transform.position + offset, Quaternion.identity);
                 break;
             case "Trampolim": Instantiate(trampoline, transform.position + offset, Quaternion.identity);
+                break;
+            case "Controlador Temporal": Instantiate(timeDecelerator, transform.position + offset, Quaternion.identity);
+                break;
+            case "Míssil": Instantiate(pineCone, transform.position + offset, Quaternion.identity);
                 break;
         }
         item_quantity.text = Player.getInstance().GetPlayerInventory().DecreseQuantityFromItem(itemName).ToString();

@@ -65,6 +65,19 @@ public class Movimento : MonoBehaviour
     {
         return isAddingForce;
     }
+
+    public void SpeedAnimation()
+    {
+        animator.SetFloat("multiplier", 2);
+        rdb.gravityScale = 4.5f;
+    }
+
+    public void NormalizeAnimation()
+    {
+        animator.SetFloat("multiplier", 1);
+        rdb.gravityScale = 4f;
+    }
+
     bool isJumping = false;
     bool isAddingForce = false;
     public void OnCollisionExit2D(Collision2D collision)
@@ -109,7 +122,7 @@ public class Movimento : MonoBehaviour
             return;
 
         if (canMove)
-            controle.Move(movHoriz * Time.fixedDeltaTime, false, pular);
+            controle.Move(movHoriz * Time.fixedUnscaledDeltaTime, false, pular);
         else
         {
             if (!isAddingForce)

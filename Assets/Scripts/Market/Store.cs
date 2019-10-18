@@ -60,4 +60,14 @@ public class Store : MonoBehaviour
     {
         moneyController.text = money.ToString() + " A";
     }
+
+    public void SpeedAnimation()
+    {
+        animator.SetFloat("multiplier",2);
+    }
+
+    public void NormalizeAnimation()
+    {
+        animator.SetFloat("multiplier", 1);
+    }
 }

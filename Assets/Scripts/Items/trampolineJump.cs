@@ -20,7 +20,7 @@ public class trampolineJump : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(velocidade, ForceMode2D.Impulse);
+        //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(velocidade, ForceMode2D.Impulse);
     }
     void OnCollisionStay2D(Collision2D collision)
     {

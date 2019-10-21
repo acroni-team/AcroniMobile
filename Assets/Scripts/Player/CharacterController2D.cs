@@ -109,13 +109,12 @@ public class CharacterController2D : MonoBehaviour
 			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
             // And then smoothing it out and applying it to the character
             if (!Player.getInstance().GetPlayerMovement().getIsAddingForce())
-
                 m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
             else
             {
-                m_Rigidbody2D.AddForce(targetVelocity);
+                if(m_Rigidbody2D.velocity.x<10.0)
+                m_Rigidbody2D.AddRelativeForce(Player.getInstance().GetPlayerMovement().getMovementVector().normalized*800f*Time.deltaTime);
             }
-
 
 
             // If the input is moving the player right and the player is facing left...

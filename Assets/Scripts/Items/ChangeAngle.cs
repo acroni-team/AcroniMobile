@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ChangeAngle : MonoBehaviour
 {
+    private bool alreadyAddedForce = false;
+    float timepassed;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,17 +19,26 @@ public class ChangeAngle : MonoBehaviour
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        GetComponent<AreaEffector2D>().forceAngle = 90;
+        
+        if(Player.getInstance().GetPlayerMovement().getIsAddingForce())
+        alreadyAddedForce = false;
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.otherCollider is CircleCollider2D)
-            GetComponent<AreaEffector2D>().forceAngle = 60;
-        else if (collision.otherCollider is CapsuleCollider2D)
-            GetComponent<AreaEffector2D>().forceAngle = 120;
-        else
-            GetComponent<AreaEffector2D>().forceAngle = 90;
-        //Debug.Log(collision.otherCollider.GetType());
+        //if (!alreadyAddedForce)
+        //{
+
+            if (collision.otherCollider is CircleCollider2D)
+                collision.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(5f, 20f), ForceMode2D.Impulse);
+            else if (collision.otherCollider is BoxCollider2D)
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, 20f), ForceMode2D.Impulse);
+            }
+            else if (collision.otherCollider is CapsuleCollider2D)
+                collision.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(-5f, 20f), ForceMode2D.Impulse);
+            Debug.Log(collision.otherCollider.GetType());
+            alreadyAddedForce = true;
+        //}
     }
 
 }

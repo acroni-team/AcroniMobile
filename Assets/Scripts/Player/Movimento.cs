@@ -41,6 +41,10 @@ public class Movimento : MonoBehaviour
     }
 
     bool canMove = true;
+    public Vector3 getMovementVector()
+    {
+        return new Vector3(Input.GetAxis("Horizontal")*Time.deltaTime, 0.0f, Input.GetAxis("Vertical")*Time.deltaTime);
+    }
     public void EnableMovement()
     {
         canMove = true;
@@ -82,28 +86,25 @@ public class Movimento : MonoBehaviour
     bool isAddingForce = false;
     public void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("trampoline"))
+        if (collision.gameObject.tag.Equals("trampoline") && !(collision.collider is PolygonCollider2D))
         {
             animator.SetBool("IsJumping", true);
             Player.getInstance().GetPlayerMovement().EnableMovement();
-
         }
     }
-
-    bool useFixUpdate = true;
-    public void OnCollisionEnter2D(Collision2D collider2d)
+    
+        public void OnCollisionEnter2D(Collision2D collider2d)
     {
-        if (collider2d.gameObject.tag.Equals("trampoline"))
+        
+        if (collider2d.gameObject.tag.Equals("trampoline")&&!(collider2d.collider is PolygonCollider2D))
         {
             if (isJumping)
             {
-                useFixUpdate = false;
                 animator.SetBool("IsJumping", false);
             }
             else
             {
                 animator.SetBool("IsJumping", true);
-                useFixUpdate = false;
                 //Jumping = true;
             }
             Player.getInstance().GetPlayerMovement().DisableMovement();
@@ -118,9 +119,6 @@ public class Movimento : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (!useFixUpdate)
-            return;
-
         if (canMove)
             controle.Move(movHoriz * Time.fixedUnscaledDeltaTime, false, pular);
         else

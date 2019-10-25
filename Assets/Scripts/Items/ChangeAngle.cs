@@ -36,7 +36,7 @@ public class ChangeAngle : MonoBehaviour
             }
             else if (collision.otherCollider is CapsuleCollider2D)
                 collision.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(-5f, 20f), ForceMode2D.Impulse);
-            Debug.Log(collision.otherCollider.GetType());
+            //Debug.Log(collision.otherCollider.GetType());
             alreadyAddedForce = true;
         //}
     }

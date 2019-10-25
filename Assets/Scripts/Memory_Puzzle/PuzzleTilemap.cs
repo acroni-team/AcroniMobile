@@ -22,7 +22,7 @@ public class PuzzleTilemap : MonoBehaviour
     {
         isColliding = true;
         Vector3 ada = collision.gameObject.transform.position;
-        placeAda = new Vector3Int(Mathf.FloorToInt(ada.x), Mathf.FloorToInt(ada.y - 2), 0);
+        placeAda = new Vector3Int(Mathf.FloorToInt(ada.x), Mathf.FloorToInt(ada.y - 1), 0);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

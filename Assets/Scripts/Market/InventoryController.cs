@@ -63,6 +63,32 @@ public class InventoryController : MonoBehaviour
         return inventoryController;
     }
 
+    Vector3 lastPosition = new Vector3(0,0,0);
+    private void Update()
+    {
+        if (!interactible)
+            return;
+
+        if (Input.touchCount == 0)
+            return;
+
+        Vector3 inputPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        if (GetComponent<BoxCollider2D>().OverlapPoint(inputPosition))
+        {
+            //Debug.Log(lastPosition.x > inputPosition.x);
+
+            if (Input.GetTouch(0).phase.Equals(TouchPhase.Moved))
+                lastPosition = inputPosition;
+        }
+    }
+
+    bool interactible;
+    public void SetInteractible(bool interacbility)
+    {
+        interactible = interacbility;
+        current_slot.SetEnabled(interacbility);
+    }
+
     void Start()
     {
         inventoryController = this;

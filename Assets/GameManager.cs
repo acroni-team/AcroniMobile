@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        gameManager = this;
+        if (gameManager == null)
+            gameManager = this;
+
         DontDestroyOnLoad(this);
     }
     
@@ -38,5 +40,11 @@ public class GameManager : MonoBehaviour
     public void EndLevel()
     {
         isLevelOver = true;
+    }
+
+    public void StartGame()
+    {
+        AudioManager.GetInstance().Stop("bgm-ada_theme");
+        LoadScene("nova_aerea");
     }
 }

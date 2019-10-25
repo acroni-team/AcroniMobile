@@ -14,6 +14,8 @@ public class Sound
     public float volume;
     [Range(.1f,3)]
     public float pitch;
+    [Range(0,1)]
+    public float dimension;
 
     public bool loop;
 }

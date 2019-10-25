@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/nova_aerea.unity
+- path: Assets/Scenes/Menu_principal.unity
   isLoaded: 1
   isActive: 1

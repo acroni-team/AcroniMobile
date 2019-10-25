@@ -1,9 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.Experimental.UIElements;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class MenuController : MonoBehaviour
 {
     static MenuController instance;
+
+    public UnityEngine.UI.Button[] moveButtons;
+    public UnityEngine.UI.Button storeButton;
 
     public static MenuController GetInstance()
     {
@@ -21,7 +27,28 @@ public class MenuController : MonoBehaviour
     public void OnClick()
     {
         animator.SetTrigger("CanAnimate");
+
+        for (int i = 0; i < 3; i++)
+        {
+            moveButtons[i].enabled = isOpen;
+            try
+            {
+                moveButtons[i].GetComponent<AxisTouchButton>().enabled = isOpen;
+            }catch(Exception)
+            {
+                moveButtons[i].GetComponent<ButtonHandler>().Name = (isOpen)?"Jump":"Jum";
+            }
+        }
+        storeButton.enabled = isOpen;
+        InventoryController.GetInventoryController().SetInteractible(isOpen);
+
+        if (isOpen)
+            CountdownTimer.getInstance().StartTimer();
+        else
+            CountdownTimer.getInstance().StopTimer();
+
         isOpen = (isOpen) ? false : true;
+
         animator.SetBool("isOpen", isOpen);
     }
 

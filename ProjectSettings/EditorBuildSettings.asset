@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/nova_aerea.unity
     guid: d0ec6e91e8145ef4bbf46a7f42338b72
+  - enabled: 1
+    path: Assets/Scenes/Menu_principal.unity
+    guid: f65a2682ebd2b194cb0b8b39e32e4802
   m_configObjects: {}

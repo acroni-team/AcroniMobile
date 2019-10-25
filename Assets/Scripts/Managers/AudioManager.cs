@@ -32,13 +32,14 @@ public class AudioManager : MonoBehaviour
             sound.source.pitch = sound.pitch;
             sound.source.loop = sound.loop;
             sound.source.name = sound.name;
+            sound.source.spatialBlend = sound.dimension;
         }
     }
 
     private void Start()
     {
-        backgroundMusic_Name = "bgm-aero_plano";
-        Play(backgroundMusic_Name);
+        //backgroundMusic_Name = "bgm-aero_plano";
+        //Play(backgroundMusic_Name);
     }
 
     public static AudioManager GetInstance()
@@ -52,6 +53,14 @@ public class AudioManager : MonoBehaviour
         if (sound == null)
             return;
         sound.source.Play();
+    }
+
+    public void Stop(string audio_name)
+    {
+        Sound sound = Array.Find(sounds, s => s.name == audio_name);
+        if (sound == null)
+            return;
+        sound.source.Stop();
     }
 
     bool isMuted = false;

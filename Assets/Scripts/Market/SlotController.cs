@@ -17,6 +17,7 @@ public class SlotController : MonoBehaviour
     bool isEmpty = true;
     Vector3 startPoint;
     Vector3 offset = new Vector3(0.43f,0.43f);
+    bool isEnabled = true;
     [HideInInspector]
     public InventoryItem item_reference;
 
@@ -75,6 +76,10 @@ public class SlotController : MonoBehaviour
         }
         item_quantity.text = Player.getInstance().GetPlayerInventory().DecreseQuantityFromItem(itemName).ToString();
     }
+
+    public void SetEnabled(bool enabled) {
+        isEnabled = enabled;
+    }
     #endregion
 
     #region MonoBehaviour Methods
@@ -89,7 +94,8 @@ public class SlotController : MonoBehaviour
     bool isMoving;
     private void Update()
     {
-        if (!slotType.Equals(SlotType.CURRENT))
+        
+        if (!slotType.Equals(SlotType.CURRENT) || !isEnabled)
             return;
 
         if (item_quantity.text.Equals("0"))
@@ -119,7 +125,7 @@ public class SlotController : MonoBehaviour
             isMoving = true;
             Vector3 Position = new Vector3(position.x, position.y, 0);
             //Vector3Int intPosition = new Vector3Int(Mathf.FloorToInt(position.x), Mathf.FloorToInt(position.y), 0);
-                rect.position = Position;
+            rect.position = Position;
         }
     }
     #endregion

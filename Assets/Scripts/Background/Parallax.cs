@@ -7,9 +7,9 @@ public class Parallax : MonoBehaviour
     
     public float parallaxEffect;
 
-    [Range(0, 1)]
-    public float velocity;
-    private float smoothing = 0.01f;
+    //[Range(0, 1)]
+    //public float velocity;
+    //private float smoothing = 0.01f;
 
     void Start()
     {

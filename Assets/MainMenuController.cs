@@ -9,7 +9,9 @@ public class MainMenuController : MonoBehaviour
     bool isOpen = false;
     public void OnClick()
     {
-        
+        animator.SetTrigger("CanAnimate");
+        isOpen = (isOpen) ? false : true;
+        animator.SetBool("isOpen", isOpen);
     }
 
 }

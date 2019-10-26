@@ -1763,6 +1763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17f0d45bfb372341b0570947b6fd375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 567706215}
 --- !u!114 &1403149522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1803,7 +1804,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1403149521}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
